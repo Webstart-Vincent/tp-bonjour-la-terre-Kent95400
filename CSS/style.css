@@ -1,0 +1,21 @@
+header {
+  display: grid;
+  margin: auto;
+  align-items: end;
+  justify-items: center;
+  background-color: #21315a;
+  font-size: 64px;
+}
+
+img,
+h1 {
+  grid-area: 1 / 1 / 2 / 2;
+}
+
+main {
+  max-width: 1000px;
+  margin: auto;
+  padding: 20px;
+  display: grid 3fr;
+  gap: 20px;
+}
