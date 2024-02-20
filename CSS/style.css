@@ -1,4 +1,4 @@
-header {
+/* header {
   display: grid;
   margin: auto;
   align-items: end;
@@ -24,4 +24,43 @@ main {
 }
 
 .article {
+} */
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  display: grid;
+  grid-template-areas: 'image title';
+  align-items: end;
+  justify-items: center;
+  background-color: #21315a;
+  font-size: 64px;
+  color: #94ce5a;
+}
+
+img {
+  grid-area: image;
+  max-width: 100%;
+  height: auto;
+}
+
+h2 {
+  grid-area: title;
+}
+
+main {
+  max-width: 1000px;
+  margin: auto;
+  padding: 20px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.article {
+  border: 1px solid #ccc;
+  padding: 20px;
 }
