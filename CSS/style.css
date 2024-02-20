@@ -8,8 +8,11 @@ header {
 }
 
 img,
-h1 {
+h2 {
+  display: grid;
+  font-size: 64px;
   grid-area: 1 / 1 / 2 / 2;
+  color: #94ce5a;
 }
 
 main {
@@ -18,4 +21,7 @@ main {
   padding: 20px;
   display: grid 3fr;
   gap: 20px;
+}
+
+.article {
 }
