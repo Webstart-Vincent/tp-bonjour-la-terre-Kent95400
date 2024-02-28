@@ -1,3 +1,3 @@
 # tp-bonjour-la-terre-Kent95400
 
-https://tp-bonjour-la-terre.netlify.app
+http://10.2.105.167:5501/index.html
