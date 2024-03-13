@@ -1,0 +1,96 @@
+body {
+  color: #fff;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+}
+header {
+  display: grid;
+  align-items: end;
+  justify-items: center;
+  background-color: #21315a;
+}
+h1 {
+  font-weight: 700;
+  font-style: italic;
+  font-size: 64px;
+  padding-bottom: 36px;
+}
+h2 {
+  font-weight: 900;
+  font-size: 32px;
+}
+h1,
+h2 {
+  text-align: center;
+  color: #94ce5a;
+}
+header > img,
+h1 {
+  grid-area: 1 / 1 / 2 / 2;
+}
+header > img {
+  max-width: 715px;
+}
+
+/* main {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  max-width: 1000px;
+  margin: auto;
+  padding: 20px;
+} */
+
+article {
+  background-color: #21315a;
+  padding: 12px;
+
+  /* Cette partie n’est pas obligatoire, c’est une technique qui me permet d’espacer le h2 et le p sans leur parler directement : à la place, on pourrait ne pas faire de grille ici et mettre une marge verticale de 10px entre le h1 et le p (un margin-bottom sur le h1, par exemple) */
+  display: grid;
+  gap: 10px;
+  align-content: start;
+}
+
+.section-1 {
+  background-color: #242830;
+}
+
+.section-2 {
+  background-color: #f5f7f8;
+}
+
+.section-3 {
+  background-color: #000000;
+}
+
+.container {
+  display: grid;
+  margin: auto;
+  max-width: 960px;
+  grid-template-columns: 7fr 5fr;
+  gap: 20px;
+  align-items: center;
+}
+
+@media (max-width: 750px) {
+  section {
+    padding: 20px;
+  }
+
+  .container {
+    grid-template-columns: 1fr;
+    gap: 0px;
+  }
+  .container > img {
+    order: 1;
+  }
+  .container > article {
+    order: -1;
+  }
+
+  header h1 {
+    font-size: 36px;
+    align-items: center;
+  }
+}
