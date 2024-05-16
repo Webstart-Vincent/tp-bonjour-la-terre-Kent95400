@@ -13,6 +13,9 @@ const body = document.querySelector('body')
 /** @type {NodeListOf<HTMLElement>} */
 const sections = document.querySelectorAll('section')
 
+/** @type {NodeListOf<HTMLElement>} */
+const bullets = document.querySelectorAll('.bullets > button')
+
 let index = 0
 const maxIndex = 2
 
@@ -27,6 +30,9 @@ const setUi = () => {
 
   const { backgroundColor } = getComputedStyle(sections[index])
   body.style.backgroundColor = backgroundColor
+
+  for (const bullet of bullets) bullet.classList.remove('active')
+  bullets[index].classList.add('active')
 }
 setUi()
 
@@ -40,23 +46,14 @@ nextButton.addEventListener('click', () => {
 })
 
 const touchData = {
-  carouselWidth: slidesContainer.offsetWidth, // Largeur du carrousel
-
-  startTouchX: 0, // Position du doigt sur l’axe horizontal quand il commence à toucher l’écran
-
-  lastDeltaX: 0, // Dernier mouvement connu du doigt sur l’axe horizontal
+  carouselWidth: slidesContainer.offsetWidth,
+  startTouchX: 0,
+  lastDeltaX: 0,
 }
+
 slidesContainer.addEventListener('touchstart', (e) => {
-  // Mémoriser la position de départ du doigt sur l’axe horizontal
-
   touchData.startTouchX = e.touches[0].screenX
-
-  // Mémoriser la largeur du carrousel
-
   touchData.carouselWidth = slidesContainer.offsetWidth
-
-  // Désactiver la transition CSS des diapositives du carrousel
-
   slidesContainer.style.transition = 'none'
 })
 
@@ -68,25 +65,22 @@ slidesContainer.addEventListener('touchmove', (e) => {
   touchData.lastDeltaX = deltaX
 
   const basePercentTranslate = index * -100
-
   const percentTranslate =
     basePercentTranslate + (100 * deltaX) / touchData.carouselWidth
-
   slidesContainer.style.transform = `translate(${percentTranslate}%)`
 })
 
 slidesContainer.addEventListener('touchend', (e) => {
   if (Math.abs(touchData.lastDeltaX / touchData.carouselWidth) > 0.1) {
     if (index !== 0 && touchData.lastDeltaX > 0) index--
-
     if (index !== maxIndex && touchData.lastDeltaX < 0) index++
   }
-
-  // Annuler le style injecté précédement par le JS
-
   slidesContainer.style.transition = ''
-
-  // Afficher la bonne diapositive en fonction de l’index
-
   setUi()
 })
+
+for (let i = 0; i < bullets.length; i++)
+  bullets[i].addEventListener('click', () => {
+    index = i
+    setUi()
+  })

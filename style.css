@@ -38,6 +38,7 @@ main {
   max-width: 960px;
   margin: auto;
   overflow: hidden;
+
   position: relative;
 }
 .slides-container {
@@ -111,29 +112,55 @@ article {
   border: #21315a 2px solid;
   background-color: #94ce5a;
 }
+.bullets {
+  position: absolute;
+  top: calc(min(100%, 100vh) - 40px);
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+}
+.bullets > button {
+  border: #94ce5a 2px solid;
+  background-color: #21315a;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  transition: 0.6s ease-in;
+  cursor: pointer;
+}
+.bullets > button.active {
+  transform: scale(1.4);
+  border-color: #21315a;
+  background-color: #94ce5a;
+}
+.meteo {
+  display: grid;
+  grid-template-columns: 5fr 7fr;
+
+  color: #94ce5a;
+  height: 538px;
+}
+
 @media (max-width: 750px) {
+  .meteo {
+    grid-template-columns: 1fr;
+  }
   section {
     padding: 20px;
-
     align-items: start;
   }
-
   .container {
     grid-template-columns: 1fr;
-
     gap: 0;
   }
-
   article {
     order: -1;
   }
-
   h1 {
     font-size: 36px;
-
     padding-bottom: 15px;
   }
-
   .bi-chevron-left,
   .bi-chevron-right {
     display: none !important;
@@ -141,14 +168,21 @@ article {
 
   .wrapper {
     height: 100vh;
-
     overflow: scroll;
-
     scroll-snap-type: y mandatory;
   }
-
   header,
   main {
     scroll-snap-align: start;
+  }
+}
+@keyframes buttonsFloating {
+  0% {
+    transform: translateY(-50%);
+    scale: 1;
+  }
+  100% {
+    transform: translateY(-52%);
+    scale: 1.1;
   }
 }
